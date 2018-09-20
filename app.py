@@ -1,13 +1,13 @@
 #!/usr/bin/env python
 # -*- coding: utf8 -*-
 
-import json
+
 from flask import Flask, jsonify
-from flask_restful import Api, Resource, reqparse
+from flask_restful import reqparse
+from DAO import DAO
 
 
 app = Flask(__name__)
-api = Api(app)
 
 parser = reqparse.RequestParser()
 parser.add_argument('c', type=str, required=True)
@@ -20,14 +20,15 @@ parser.add_argument('d', type=str, required=True)
 @app.route('/api/v1.0/deploy', methods=['GET'])
 def deploy():
     args = parser.parse_args()
-    componente = args['c']
-    versao = args['v']
-    responsavel = args['r']
-    status = args["s"]
-    data = args["d"]
-    print(str(versao))
-    return jsonify({"versao": versao, "componente": componente, "responsavel": responsavel,
-                    "status": status, "data": data})
+
+    dados = jsonify({"componente": args['c'], "versao": float(args['v']), "responsavel": args['r'],
+                    "status": args["s"], "data": args["d"]})
+
+    ret = DAO.inserir_dados(args)
+    if ret:
+        return jsonify({"status": "success", "data": {},"message": "Dados inseridos com sucesso!"})
+    else:
+        return jsonify({"status": "error", "code": 500, "data": None, "message": "Ocorreu um erro ao processar a informação"})
 
 
 if __name__ == '__main__':
