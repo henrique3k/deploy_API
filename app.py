@@ -21,12 +21,9 @@ parser.add_argument('d', type=str, required=True)
 def deploy():
     args = parser.parse_args()
 
-    dados = jsonify({"componente": args['c'], "versao": float(args['v']), "responsavel": args['r'],
-                    "status": args["s"], "data": args["d"]})
-
     ret = DAO.inserir_dados(args)
     if ret:
-        return jsonify({"status": "success", "data": {},"message": "Dados inseridos com sucesso!"})
+        greturn jsonify({"status": "success", "data": {},"message": "Dados inseridos com sucesso!"})
     else:
         return jsonify({"status": "error", "code": 500, "data": None, "message": "Ocorreu um erro ao processar a informação"})
 
