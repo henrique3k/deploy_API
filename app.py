@@ -23,9 +23,9 @@ def deploy():
 
     ret = DAO.inserir_dados(args)
     if ret:
-        greturn jsonify({"status": "success", "data": {},"message": "Dados inseridos com sucesso!"})
+        return jsonify({"status": "Sucesso", "message": "Dados inseridos com sucesso!"})
     else:
-        return jsonify({"status": "error", "code": 500, "data": None, "message": "Ocorreu um erro ao processar a informação"})
+        return jsonify({"status": "Erro", "code": 500, "data": None, "message": "Ocorreu um erro ao inserir as informações."})
 
 
 if __name__ == '__main__':
