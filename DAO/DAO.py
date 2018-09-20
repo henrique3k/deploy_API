@@ -1,4 +1,4 @@
-import sqlite3
+import sqlite3, datetime
 
 
 def inserir_dados(dados):
@@ -10,7 +10,7 @@ def inserir_dados(dados):
     except Exception as e:
         print("Erro ao conectar ao bd.", str(e))
     try:
-        cursor.execute(f"""INSERT INTO deploy (componente, versao, responsavel, status, data) VALUES ('{dados.c}',{float(dados.v)}, '{dados.r}', '{dados.s}', '{dados.d}')""")
+        cursor.execute(f"""INSERT INTO deploy (componente, versao, responsavel, status, data) VALUES ('{dados.c}',{float(dados.v)}, '{dados.r}', '{dados.s}', '{datetime.datetime.now()}')""")
         conn.commit()
         cursor.close()
         return True

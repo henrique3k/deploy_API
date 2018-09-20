@@ -14,7 +14,6 @@ parser.add_argument('c', type=str, required=True)
 parser.add_argument('v', type=float, required=True)
 parser.add_argument('r', type=str, required=True)
 parser.add_argument('s', type=str, required=True)
-parser.add_argument('d', type=str, required=True)
 
 
 @app.route('/api/v1.0/deploy', methods=['GET'])
