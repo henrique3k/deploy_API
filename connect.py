@@ -1,9 +1,7 @@
 import sqlite3
 
-conn = sqlite3.connect('deploy.db')
 
-cursor = conn.cursor()
+def cria_conexao():
+    conn = sqlite3.connect('deploy.db')
 
-
-
-conn.close()
+    return conn
