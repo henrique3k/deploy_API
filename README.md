@@ -18,6 +18,7 @@ Como uma das premissas foi não agregar complexidade desnecessária ao projeto, 
 Dockerfile incluso no projeto.
 
 é possível acompanhar o andamento da aplicação através do arquivo de Log.
+OBS: a API rodará na porta default 0.0.0.0:5000
 
 ## Como Usar
 
