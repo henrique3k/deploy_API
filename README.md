@@ -21,7 +21,8 @@ Dockerfile incluso no projeto.
 
 ## Como Usar
 
-#docker build -t deploy_flaskapi:latest . 
+#docker build -t deploy_flaskapi:latest .
+
 #docker run -d -p 5000:5000 deploy_flaskapi
 
 **Exemplo do endpoint via http:** 
