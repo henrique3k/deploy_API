@@ -1,10 +1,14 @@
 # deploy_API
 simples API criada para auxiliar na agilidade de deploy, recebendo via Http todos os parâmetros necessários para funcionamento e persistindo em um simples banco de dados. 
 
-Parâmetros:
+## Parâmetros:
+
 **c** - Componente: Componente que está em processo de deploy
+
 **v** - Versão: Versão que está sendo entregue
+
 **r** - Rsponsável: Nome do membro do time de engenharia que está realizando o processo de deploy
+
 **s** - Status: Status do processo de deploy
 
 
@@ -22,6 +26,7 @@ Dockerfile incluso no projeto.
 
 **Exemplo do endpoint via http:** 
 http://localhost:5000/api/v1.0/deploy?c=deploy_api_test&v=1.3&r=HenriqueFernandes&s=dev&
+
 **Exemplo de chamada via cURL**
 curl --request GET \
   --url 'http://localhost:5000/api/v1.0/deploy?c=deploy_api_test&v=1.3&r=HenriqueFernandes&s=dev'
