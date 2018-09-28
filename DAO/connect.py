@@ -11,7 +11,7 @@ def connect():
         client = MongoClient(
             os.environ['DB_PORT_27017_TCP_ADDR'],
             27017)
-        db = client.tododb
+        db = client.deploy_api
         logging.info("Conexão ao Banco de dados efetuada com sucesso.")
         return db
     except Exception as e:
