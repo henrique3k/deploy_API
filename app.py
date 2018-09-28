@@ -7,6 +7,7 @@ from flask_restful import reqparse
 from DAO import DAO
 import logging
 
+
 logging.basicConfig(filename='deploy_api.log', level=logging.DEBUG,
                     format='%(asctime)s %(levelname)s %(funcName)s => %(message)s')
 
@@ -24,7 +25,8 @@ parser.add_argument('s', type=str, required=True)
 def deploy():
     args = parser.parse_args()
 
-    ret = DAO.inserir_dados(args)
+    # ret = DAO.inserir_dados(args)
+    ret = DAO.inserir_dados_mongo(args)
     if ret:
         logging.info("Dados inseridos com sucesso.")
         logging.debug(args)

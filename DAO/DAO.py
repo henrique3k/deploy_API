@@ -1,25 +1,18 @@
-import sqlite3, datetime, logging
+import sqlite3, datetime, logging, pymongo
+from DAO.connect import connect
 
 logging.basicConfig(filename='deploy_api.log', level=logging.DEBUG,
                     format='%(asctime)s %(levelname)s %(funcName)s => %(message)s')
 
 
-def inserir_dados(dados):
-    print(dados.c)
-    global cursor
+def inserir_dados_mongo(dados):
+    db = connect()
+    dados["data"] = datetime.datetime.now()
     try:
-        conn = sqlite3.connect('deploy.db')
-        cursor = conn.cursor()
-    except Exception as e:
-        logging.info("Erro ao conectar ao bd.")
-        logging.exception(str(e))
-    try:
-        cursor.execute(f"""INSERT INTO deploy (componente, versao, responsavel, status, data) VALUES ('{dados.c}',{float(dados.v)}, '{dados.r}', '{dados.s}', '{datetime.datetime.now()}')""")
-        conn.commit()
-        cursor.close()
+        db.deploy_api.insert_one(dados)
+        logging.info("Dados inseridos com sucesso.")
         return True
     except Exception as e:
-        logging.info("Não foi possível salvar os dados")
-        logging.exception(str(e))
-        cursor.close()
-        return False
+        logging.exception("Erro ao inserir dados no BD. \n", str(e))
+        return True
+
