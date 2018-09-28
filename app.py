@@ -25,12 +25,12 @@ parser.add_argument('s', type=str, required=True)
 def deploy():
     args = parser.parse_args()
 
-    # ret = DAO.inserir_dados(args)
-    ret = DAO.inserir_dados_mongo(args)
+    ret, _id = DAO.inserir_dados_mongo(args)
     if ret:
         logging.info("Dados inseridos com sucesso.")
         logging.debug(args)
-        return jsonify({"status": "Sucesso", "message": "Dados inseridos com sucesso!"})
+        return jsonify({"status": "Sucesso", "message": "Dados inseridos com sucesso!",
+                        "Object_id": str(_id)})
     else:
         logging.info("Erro ao inserir os dados.")
         logging.debug(args)

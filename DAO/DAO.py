@@ -7,12 +7,17 @@ logging.basicConfig(filename='deploy_api.log', level=logging.DEBUG,
 
 def inserir_dados_mongo(dados):
     db = connect()
-    dados["data"] = datetime.datetime.now()
+    dados["data"] = str(datetime.datetime.now())
     try:
-        db.deploy_api.insert_one(dados)
+        _id = db.deploy_api.insert_one(dados)
         logging.info("Dados inseridos com sucesso.")
-        return True
+        return True, _id
     except Exception as e:
         logging.exception("Erro ao inserir dados no BD. \n", str(e))
-        return True
+        return False, None
+
+
+def return_dados():
+    pass
+
 

@@ -1,3 +1,4 @@
+import pymongo
 from pymongo import MongoClient
 import os, logging
 
@@ -11,7 +12,7 @@ def connect():
             os.environ['DB_PORT_27017_TCP_ADDR'],
             27017)
         db = client.tododb
-        logging.debug("Conexão ao Bando de dados efetuada com sucesso!")
+        logging.info("Conexão ao Banco de dados efetuada com sucesso.")
         return db
     except Exception as e:
         logging.exception("Erro ao conectar no MongoDb.", str(e))
