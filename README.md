@@ -22,9 +22,9 @@ OBS: a API rodará na porta default 0.0.0.0:5000
 
 ## Como Usar
 
-#docker build -t deploy_flaskapi:latest .
+#docker-compose build 
 
-#docker run -d -p 5000:5000 deploy_flaskapi
+#docker-compose up
 
 **Exemplo do endpoint via http:** 
 http://localhost:5000/api/v1.0/deploy?c=deploy_api_test&v=1.3&r=HenriqueFernandes&s=dev&
