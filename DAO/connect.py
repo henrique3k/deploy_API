@@ -8,9 +8,10 @@ logging.basicConfig(filename='deploy_api.log', level=logging.DEBUG,
 
 def connect():
     try:
-        client = MongoClient(
-            os.environ['DB_PORT_27017_TCP_ADDR'],
-            27017)
+        # client = MongoClient(
+        #     os.environ['DB_PORT_27017_TCP_ADDR'],
+        #     27017)
+        client = MongoClient('mongodb://localhost:27017/')
         db = client.deploy_api
         logging.info("Conexão ao Banco de dados efetuada com sucesso.")
         return db
