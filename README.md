@@ -32,3 +32,8 @@ http://localhost:5000/api/v1.0/deploy?c=deploy_api_test&v=1.3&r=HenriqueFernande
 **Exemplo de chamada via cURL**
 curl --request GET \
   --url 'http://localhost:5000/api/v1.0/deploy?c=deploy_api_test&v=1.3&r=HenriqueFernandes&s=dev'
+  
+  
+  ## **EXTRA:**
+  Para retorno dos dados no navegador, basta realizar a chamada da seguinte forma: 
+  http://localhost:5000/api/v1.0/export
